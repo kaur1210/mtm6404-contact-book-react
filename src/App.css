@@ -1,41 +1,67 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+body {
+  background-color: #121212;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-@keyframes logo-spin {
-  from {
+.spinner {
+  border: 4px solid #ffffff;
+  border-top: 4px solid #ff6f61;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.contact-heading {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  /* Gradient Text Styling */
+  background: linear-gradient(90deg, #ff6f61, #ffab40);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent; 
+ 
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease, text-shadow 0.4s ease;
 }
 
-.card {
-  padding: 2em;
+.contact-heading:hover {
+  transform: scale(1.1);
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
 }
 
-.read-the-docs {
-  color: #888;
+.contact-form-card {
+  background: linear-gradient(135deg, #2e2a28, #3e3937);
+  border-radius: 15px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  color: #e0e0e0;
+
+  /* Hover Effects */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.contact-form-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }

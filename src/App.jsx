@@ -1,34 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ContactList from "./components/ContactList";
+import ContactDetails from "./components/ContactDetails";
+import AddContact from "./components/AddContactForm";
+import EditContact from "./components/EditContactForm";
+import NavigationBar from "./components/Navbar";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [filter, setFilter] = useState(""); // State for managing search input
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <NavigationBar /> {/* Navigation bar for routing links */}
+      <div className="container" style={{ marginTop: '80px' }}>
+        <Routes>
+          {/* Route for displaying contact list */}
+          <Route path="/" element={<ContactList filter={filter} />} />
+          {/* Route for displaying specific contact details */}
+          <Route path="/contact/:id" element={<ContactDetails />} />
+          {/* Route for adding a new contact */}
+          <Route path="/add" element={<AddContact />} />
+          {/* Route for editing an existing contact */}
+          <Route path="/edit/:id" element={<EditContact />} />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    </Router>
+  );
+};
 
-export default App
+export default App;
